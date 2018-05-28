@@ -5,26 +5,61 @@ package com.example.android.miwok;
  * Contains default and Miwok translation.
  */
 public class Word {
-    private String miwok_word;
-    private String default_word;
+    private static final int NO_IMAGE = -1;
+    private String mMiwokWord;
+    private String mDefaultWord;
+    private int mImageResourceID = NO_IMAGE;
 
+    /**
+     * Create a new Word object.
+     *
+     * @param mMiwokWord the Miwok word
+     * @param mDefaultWord the default word
+     */
+    Word(String mMiwokWord, String mDefaultWord){
+        this.mMiwokWord     = mMiwokWord;
+        this.mDefaultWord   = mDefaultWord;
+    }
 
-    public Word(String miwok_word, String default_word){
-        this.miwok_word     = miwok_word;
-        this.default_word   = default_word;
+    /**
+     * Create a new Word object.
+     *
+     * @param mMiwokWord the Miwok word
+     * @param mDefaultWord the default word
+     * @param mImageResourceID the image resource ID
+     */
+    Word(String mMiwokWord, String mDefaultWord, int mImageResourceID){
+        this.mMiwokWord       = mMiwokWord;
+        this.mDefaultWord     = mDefaultWord;
+        this.mImageResourceID = mImageResourceID;
     }
 
     /**
      * Get default translation.
      */
-    public String getMiwok_word(){
-        return miwok_word;
+    public String getMiwokWord(){
+        return mMiwokWord;
     }
 
     /**
      * Get miwok translation.
      */
-    public String getDefault_word(){
-        return default_word;
+    public String getDefaultWord(){
+        return mDefaultWord;
+    }
+
+    /**
+     * Get the image's resource ID.
+     */
+    public int getImageResourceID(){
+        return mImageResourceID;
+    }
+
+    /**
+     * True if word has an image, false otherwise.
+     * @return boolean
+     */
+    public boolean hasImage(){
+        return mImageResourceID != NO_IMAGE;
     }
 }

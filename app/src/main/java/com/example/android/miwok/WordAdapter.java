@@ -3,10 +3,13 @@ package com.example.android.miwok;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -14,8 +17,11 @@ import java.util.List;
 
 public class WordAdapter extends ArrayAdapter<Word>{
 
-    public WordAdapter(Activity context, ArrayList<Word> words) {
+    private int mColorResourceID;
+
+    public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceID) {
         super(context, 0, words);
+        mColorResourceID = colorResourceID;
     }
 
     @Override
@@ -28,15 +34,29 @@ public class WordAdapter extends ArrayAdapter<Word>{
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
 
+        // setting background
+        LinearLayout itemView = (LinearLayout) listItemView.findViewById(R.id.list_item);
+        // getting color
+        int color = ContextCompat.getColor(getContext(),mColorResourceID);
+        itemView.setBackgroundColor(color);
+
         // after view recycled or inflated, securing object at position
         Word wordObj = getItem(position);
 
         // now, filling in view with information from the object
         TextView miwokWord = (TextView) listItemView.findViewById(R.id.miwok_word);
-        miwokWord.setText(wordObj.getMiwok_word());
+        miwokWord.setText(wordObj.getMiwokWord());
 
         TextView defaultWord = (TextView) listItemView.findViewById(R.id.default_word);
-        defaultWord.setText(wordObj.getDefault_word());
+        defaultWord.setText(wordObj.getDefaultWord());
+
+        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
+        if(wordObj.hasImage()){
+            imageView.setImageResource(wordObj.getImageResourceID());
+            imageView.setVisibility(View.VISIBLE);
+        }else{
+            imageView.setVisibility(View.GONE);
+        }
 
         return listItemView;
     }
