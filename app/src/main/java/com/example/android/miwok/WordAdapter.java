@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -35,7 +36,7 @@ public class WordAdapter extends ArrayAdapter<Word>{
         }
 
         // setting background
-        LinearLayout itemView = (LinearLayout) listItemView.findViewById(R.id.list_item);
+        RelativeLayout itemView = (RelativeLayout) listItemView.findViewById(R.id.main_background);
         // getting color
         int color = ContextCompat.getColor(getContext(),mColorResourceID);
         itemView.setBackgroundColor(color);

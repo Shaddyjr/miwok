@@ -6,4 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/tan_background"
-    tools:context="com.example.android.miwok.NumbersActivity"/>
+    tools:context="com.example.android.miwok.NumbersActivity"
+    android:drawSelectorOnTop="true"
+    />
