@@ -37,4 +37,9 @@
 
     <!--white-->
     <color name="white">#FFFFFF</color>
+
+    <!--tab text color-->
+    <color name="tabTextDefalt">#a8a19e</color>
+
+
 </resources>
